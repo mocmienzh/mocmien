@@ -1,6 +1,6 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro'
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 const allCourses = await getCollection('courses');
 const allPosts = await getCollection('blog');
 allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());

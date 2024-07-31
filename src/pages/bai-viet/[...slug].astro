@@ -13,5 +13,6 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 <MainLayout>
+  <img src={"/images/" + entry.data.mainImg} alt="">
   <Content />
 </MainLayout>
