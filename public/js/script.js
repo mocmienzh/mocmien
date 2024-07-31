@@ -1,3 +1,13 @@
+if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+}
+
 
 $(document).ready(function(){
     AOS.init({
@@ -5,21 +15,20 @@ $(document).ready(function(){
         duration: 1000,
     });
 
-    $(".owl-carousel-review").owlCarousel({
+    $('.owl-carousel-review').owlCarousel({
         items: 1,
         nav: false,
         dots: false,
         loop: true,
         autoplay: true,
+        autoplayHoverPause: true,
     });
-});
-const mobileBar = document.querySelector('.home-menu-bar');
-const headerNav = document.querySelector('#home-header nav');
-mobileBar.addEventListener('click', function(event) {
-    if (headerNav.classList.contains('header-nav-hidden')) {
-        headerNav.classList.remove('header-nav-hidden');
-    }
-    else {
-        headerNav.classList.add('header-nav-hidden');
-    }
+
+    $('.home-menu-bar').on('click', function() {
+        if ($('#home-header nav').hasClass('header-nav-hidden')) {
+            $('#home-header nav').removeClass('header-nav-hidden');
+        } else {
+            $('#home-header nav').addClass('header-nav-hidden');
+        }
+    });
 });
