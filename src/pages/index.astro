@@ -1,0 +1,317 @@
+---
+import MainLayout from '../layouts/MainLayout.astro'
+import { getCollection, getEntry } from 'astro:content';
+const allCourses = await getCollection('courses');
+const allPosts = await getCollection('blog');
+allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+import { formatDate } from '../utils/formatDate';
+---
+
+<MainLayout>
+		<div id="home-container">
+			<div class="intro-bg-wrap">
+				<div class="intro-bg-main">
+					<div class="intro-bg-left">
+						<h1 class="intro-left-heading" data-aos="fade-right">
+							Học Tiếng Trung cùng
+							<span class="color-primary">Mộc Miên</span>
+						</h1>
+						<p class="intro-left-desc text-color-2"  data-aos="fade-left">
+							Được thành lập vào năm 2020, Mộc Miên tự hào là trung tâm uy tín đã đồng hành cùng hơn 300 học viên chinh phục thành công chứng chỉ HSK.
+						</p>
+						<div class="intro-btn-wrap">
+							<a href="" class="btn-primary intro-btn-reg" data-aos="fade-right">Đăng ký ngay</a>
+							<a href="" class="intro-btn-watch" data-aos="fade-left">
+								<i class="fa-solid fa-play icon-round"></i>
+								Giới thiệu
+							</a>
+						</div>
+					</div>
+					<div class="intro-bg-right">
+						<div class="aft-circle1"></div>
+						<div class="aft-circle2"></div>
+						<div class="intro-img-teacher-wrap">
+							<img src="/images/co-giao.png" alt="" class="intro-teacher-img">
+							<ul class="teacher-prop teacher-prop-list teacher-prop-list1" data-aos="fade-right" data-aos-duration="2000">
+								<li class="teacher-prop-list-item text-color-2">
+									<i class="fa-solid fa-check"></i>
+									Chứng chỉ giảng dạy Tiếng Trung
+								</li>
+								<li class="teacher-prop-list-item text-color-2">
+									<i class="fa-solid fa-check"></i>
+									Kinh nghiệm lâu năm
+								</li>
+							</ul>
+							<div class="teacher-prop teacher-prop-num teacher-prop-num1" data-aos="fade-left" data-aos-duration="2000">
+								<i class="fa-solid fa-book-open icon-round"></i>
+								<div class="teacher-prop-num-body">
+									<span class="teacher-prop-num-value">60+</span>
+									<span class="teacher-prop-num-text text-color-2">Khoá học tương tác</span>
+								</div>
+							</div>
+							<ul class="teacher-prop teacher-prop-list teacher-prop-list2" data-aos="fade-right" data-aos-duration="2000">
+								<li class="teacher-prop-list-item text-color-2">
+									<i class="fa-solid fa-check"></i>
+									Giảm 10% học phí mỗi khoá
+								</li>
+								<li class="teacher-prop-list-item text-color-2">
+									<i class="fa-solid fa-check"></i>
+									Giáo viên chuyên nghiệp, nhiệt tình
+								</li>
+							</ul>
+							<div class="teacher-prop teacher-prop-num teacher-prop-num2" data-aos="fade-left" data-aos-duration="2000">
+								<i class="fa-solid fa-users icon-round"></i>
+								<div class="teacher-prop-num-body">
+									<span class="teacher-prop-num-value">300+</span>
+									<span class="teacher-prop-num-text text-color-2">Học sinh theo học</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="intro-elements-wrap" data-aos="fade-up">
+					<ul class="intro-elements-list row gy-3">
+						<li class="intro-elements-item col-xl-3 col-md-3 col-6">
+							<i class="fa-solid fa-laptop icon-round"></i>
+							Học online/offline
+						</li>
+						<li class="intro-elements-item col-xl-3 col-md-3 col-6">
+							<i class="fa-solid fa-book-open icon-round"></i>
+							50+ khoá học
+						</li>
+						<li class="intro-elements-item col-xl-3 col-md-3 col-6">
+							<i class="fa-solid fa-book icon-round"></i>
+							Giáo trình chi tiết
+						</li>
+						<li class="intro-elements-item col-xl-3 col-md-3 col-6">
+							<i class="fa-solid fa-award icon-round"></i>
+							Cam kết đầu ra
+						</li>
+					</ul>
+				</div>
+			</div>
+	
+			<div class="feature-courses-wrap">
+				<div class="ft-courses-header row">
+					<div class="ft-courses-title col-xl-6 col-md-6 col-sm-4">
+						<h3 class="ft-courses-title-fir" data-aos="fade-right">Các khoá học</h3>
+						<h2 class="ft-courses-title-sec">Nổi bật tại Mộc Miên</h2>
+					</div>
+					<div class="ft-courses-desc col-xl-6 col-md-6 col-sm-8">
+						<p class="text-color-2">Tại Mộc Miên, bạn sẽ được học những khoá học chất lượng với phương pháp giảng dạy độc đáo, 
+							tư duy sáng tạo, mẹo vặt ghi nhớ kiến thức. Đồng thời nâng cao kĩ năng giao tiếp qua các
+							hoạt động nhóm.
+						</p>
+					</div>
+				</div>
+				<ul class="ft-courses-list row gy-3" data-aos="fade-up" data-aos-duration="1500">
+					{allCourses.map(course => (
+						<li class="ft-courses-item col-xl-4 col-md-12">
+							<div class="ft-course-item-body">
+								<img src={"/images/" + course.data.mainImg} alt="" class="ft-course-img">
+								<h4 class="ft-course-name">{course.data.name}</h4>
+								<p class="ft-course-desc text-color-2">
+									{course.data.description}
+								</p>
+								<div class="ft-course-props">
+									<div class="ft-course-props-item">
+										<i class="fa-solid fa-bookmark icon-round"></i>
+										{course.data.subjects} bài học
+									</div>
+									<div class="ft-course-props-item">
+										<i class="fa-solid fa-clock icon-round"></i>
+										{course.data.lessons} tiết
+									</div>
+								</div>
+								<div class="ft-course-separator"></div>
+								<a href={'/khoa-hoc/' + course.slug} class="btn-primary ft-course-btn-view">Xem Chi tiết</a>
+							</div>
+						</li>
+					))}
+				</ul>
+			</div>
+	
+			<div class="reason-wrap">
+				<div class="reason-body">
+					<div class="reason-heading" data-aos="fade-left">
+						<h5 class="reason-sub-heading">
+							Tìm hiểu xem
+						</h5>
+						<h4 class="reason-main-heading">
+							Vì sao bạn nên chọn học Tiếng Trung tại Mộc Miên?
+						</h4>
+						<p class="reason-heading-desc text-color-2">
+							Mộc Miên là trung tâm uy tín tại Đông Hà - Quảng Trị. 
+							Trải qua 4 năm phát triển, trung tâm ngày càng trở nên 
+							uy tín hơn tại tỉnh Quảng Trị.
+						</p>
+					</div>
+					<ul class="reason-body-list row gy-3">
+						<li class="reason-item col-12 col-xl-6 col-md-6">
+							<div class="reason-item-wrap">
+								<div class="reason-icon-wrap">
+									<i class="fa-solid fa-star icon-round"></i>
+								</div>
+								<div class="reason-item-detail">
+									<h5 class="reason-title">Đạt chuẩn trung tâm</h5>
+									<p class="reason-desc text-color-2">
+										Mộc Miên có đầy đủ giấy chứng nhận từ Sở GD và ĐT tỉnh Quảng Trị
+									</p>
+								</div>
+							</div>
+						</li>
+						<li class="reason-item col-12 col-xl-6 col-md-6">
+							<div class="reason-item-wrap">
+								<div class="reason-icon-wrap">
+									<i class="fa-solid fa-book-bookmark icon-round"></i>
+								</div>
+								<div class="reason-item-detail">
+									<h5 class="reason-title">Đa dạng khoá học, giáo trình</h5>
+									<p class="reason-desc text-color-2">
+										Hơn 60 khoá học khác nhau, giáo trình đa dạng phong phú, phù hợp
+										rộng rãi
+									</p>
+								</div>
+							</div>
+						</li>
+						<li class="reason-item col-12 col-xl-6 col-md-6">
+							<div class="reason-item-wrap">
+								<div class="reason-icon-wrap">
+									<i class="fa-solid fa-chalkboard-user icon-round"></i>
+								</div>
+								<div class="reason-item-detail">
+									<h5 class="reason-title">Giáo viên có kinh nghiệm</h5>
+									<p class="reason-desc text-color-2">
+										Đã giúp 300+ học viên đạt số điểm như mong muốn
+									</p>
+								</div>
+							</div>
+						</li>
+						<li class="reason-item col-12 col-xl-6 col-md-6">
+							<div class="reason-item-wrap">
+								<div class="reason-icon-wrap">
+									<i class="fa-solid fa-laptop icon-round"></i>
+								</div>
+								<div class="reason-item-detail">
+									<h5 class="reason-title">Đa dạng hình thức học</h5>
+									<p class="reason-desc text-color-2">
+										Học online có thể phù hợp với người có công việc bận rộn
+									</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+	
+			<div class="review-wrap">
+				<div class="review-heading heading-center">
+					<h5 class="review-sub-heading heading-center-sub" data-aos="fade-up">
+						Nhận xét
+					</h5>
+					<h4 class="review-main-heading heading-center-main">
+						#feedback của học viên về trung tâm
+					</h4>
+				</div>
+	
+				<div class="review-content row" data-aos="fade-right">
+					<div class="review-content-img-wrap col-xl-4 col-md-4 col-12">
+						<div class="review-img-parent">
+							<img class="review-content-img" src="/images/student.jpg" alt="">
+							<i class="fa-solid fa-quote-left icon-round"></i>
+						</div>
+					</div>
+					<div class="review-content-body col-xl-8 col-md-8">
+						<ul class="review-content-list owl-carousel-review">
+							<li class="review-content-item">
+								<div class="review-content-msg-wrap">
+									<p class="review-content-msg text-color-2">
+										老师好。Sau hơn 4 tháng gắn bó với chị Linh, cũng như với Tiếng Trung Mộc Miên,
+										em thấy biết ơn và may mắn khi tìm đúng người để gửi gắm 汉语 của mình.
+										Mọi người luôn rất kiên nhẫn giảng giải và lắng nghe kể cả khi em hay
+										"cãi cố". Chúc cho Tiếng Trung Mộc Miên sẽ ngày càng nhiều học viên
+										như elm.❤️❤️
+									</p>
+									<div class="review-content-stars">
+										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star"></i>
+									</div>
+								</div>
+								<div class="review-content-reviewer">
+									<span class="reviewer-name">Bạn Na</span>
+									<span class="reviewer-job text-color-2">Học sinh</span>
+								</div>
+								<i class="fa-solid fa-quote-right review-quote-right"></i>
+							</li>
+							<li class="review-content-item">
+								<div class="review-content-msg-wrap">
+									<p class="review-content-msg text-color-2">
+										Em cảm thấy chị giáo rất thoải mái dễ tính. 2 ngày nữa đến hạn
+										phải xong web cho chị rồi mà giờ em vẫn ngồi viết dòng này :)).
+										Mong là chị giáo sẽ tha thứ cho em
+									</p>
+									<div class="review-content-stars">
+										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star"></i>
+										<i class="fa-solid fa-star"></i>
+									</div>
+								</div>
+								<div class="review-content-reviewer">
+									<span class="reviewer-name">Duy Phúc</span>
+									<span class="reviewer-job text-color-2">Viết web này</span>
+								</div>
+								<i class="fa-solid fa-quote-right review-quote-right"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+	
+			<div class="nw-blog-wrap">
+				<div class="nw-blog-heading heading-center">
+					<h5 class="nw-blog-sub-heading heading-center-sub" data-aos="fade-up">
+						Tìm đọc
+					</h5>
+					<h4 class="nw-blog-main-heading heading-center-main">
+						Các bài viết mới nhất
+					</h4>
+					<p class="heading-center-desc text-color-2">
+						Ngoài giảng dạy ra, Mộc Miên còn liên tục chia sẻ
+						những bài viết về kiến thức, kinh nghiệm học tiếng Trung.
+					</p>
+				</div>
+				<div class="nw-blog-content" data-aos="fade-right">
+					<ul class="nw-blog-list row gy-5">
+						{allPosts.slice(0, 3).map(post => (
+							<li class="nw-blog-item col-xl-4 col-md-12">
+								<div class="nw-blog-item-body">
+									<a href={'/bai-viet/' + post.slug} class="blog-item-link-img">
+										<img src={'/images/' + post.data.mainImg} alt="" class="blog-item-img">
+									</a>
+									<div class="nw-blog-item-ref">
+										<a href={'/bai-viet/' + post.slug} class="blog-item-link-title">
+											{post.data.title}
+										</a>
+										<span class="blog-item-date text-color-2">{formatDate(post.data.pubDate)}</span>
+										<p class="blog-item-short-desc text-color-2">
+											{post.body.split(' ').slice(0, 30).join(' ') + ' ...'}
+										</p>
+										<a href={'/bai-viet/' + post.slug} class="blog-item-read-more">
+											Đọc tiếp
+											<i class="fa-solid fa-arrow-right"></i>
+										</a>
+									</div>
+								</div>
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script is:inline src="/js/script.js"></script>
+</MainLayout>
