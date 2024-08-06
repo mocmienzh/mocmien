@@ -39,7 +39,7 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
     <div class="blog-content-wrap row">
       <div class="blog-content col-9">
         <h1 class="blog-body-title">{entry.data.title}</h1>
-        <img src={"/images/" + entry.data.mainImg} alt="" class="blog-body-main-img">
+        <img src={entry.data.mainImg} alt="" class="blog-body-main-img">
         <Content />
         <div class="blog-author-wrap">
           <div class="blog-author-body row">
@@ -68,7 +68,7 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
             {recentPosts.slice(0, 4).map (post => (
               <div class="recent-item row">
                 <div class="col-6">
-                  <img src={"/images/" + post.data.mainImg} alt="" class="recent-item-img">
+                  <img src={post.data.mainImg} alt="" class="recent-item-img">
                 </div>
                 <div class="col-6 recent-item-body">
                   <a href={"/bai-viet/" + post.slug} class="recent-item-title">

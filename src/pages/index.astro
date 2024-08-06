@@ -109,7 +109,7 @@ import '../css/index.css'
 					{allCourses.map(course => (
 						<li class="ft-courses-item col-xl-4 col-md-12">
 							<div class="ft-course-item-body">
-								<img src={"/images/" + course.data.mainImg} alt="" class="ft-course-img">
+								<img src={course.data.mainImg} alt="" class="ft-course-img">
 								<h4 class="ft-course-name">{course.data.name}</h4>
 								<p class="ft-course-desc text-color-2">
 									{course.data.description}
@@ -292,7 +292,7 @@ import '../css/index.css'
 							<li class="nw-blog-item col-xl-4 col-md-12">
 								<div class="nw-blog-item-body">
 									<a href={'/bai-viet/' + post.slug} class="blog-item-link-img">
-										<img src={'/images/' + post.data.mainImg} alt="" class="blog-item-img">
+										<img src={post.data.mainImg} alt="" class="blog-item-img">
 									</a>
 									<div class="nw-blog-item-ref">
 										<a href={'/bai-viet/' + post.slug} class="blog-item-link-title">
