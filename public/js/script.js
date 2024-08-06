@@ -25,10 +25,10 @@ $(document).ready(function(){
     });
 
     $('.home-menu-bar').on('click', function() {
-        if ($('#home-header nav').hasClass('header-nav-hidden')) {
-            $('#home-header nav').removeClass('header-nav-hidden');
+        if ($('#main-header nav').hasClass('header-nav-hidden')) {
+            $('#main-header nav').removeClass('header-nav-hidden');
         } else {
-            $('#home-header nav').addClass('header-nav-hidden');
+            $('#main-header nav').addClass('header-nav-hidden');
         }
     });
 });

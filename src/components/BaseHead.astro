@@ -1,6 +1,5 @@
 ---
-import '../css/style.css'
-import '../css/responsive.css'
+import '../css/global.css'
 ---
 <head>
     <meta charset="UTF-8">
@@ -36,4 +35,6 @@ import '../css/responsive.css'
     <!-- Facebook SDK -->
     <div id="fb-root"></div>
     <script is:inline async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v20.0" nonce="HewgFz9d"></script>
+
+    <slot/>
 </head>

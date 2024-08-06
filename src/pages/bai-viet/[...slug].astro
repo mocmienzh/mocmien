@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
+import { formatDate } from '../../utils/formatDate';
+
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -11,8 +13,189 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts.filter(post => post.slug !== entry.slug)
+recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 <MainLayout>
-  <img src={"/images/" + entry.data.mainImg} alt="">
-  <Content />
+  <div class="blog-body-wrapper">
+    <div class="blog-breadcum-wrapper">
+      <div class="blog-breadcum-item">
+        <i class="fa-solid fa-house"></i>
+        Trang chủ
+      </div>
+      <i class="fa-solid fa-angle-right blog-breadcum-arrow"></i>
+      <div class="blog-breadcum-item">
+        Bài viết
+      </div>
+      <i class="fa-solid fa-angle-right blog-breadcum-arrow"></i>
+      <div class="blog-breadcum-item">
+        {entry.slug}
+      </div>
+    </div>
+
+    <div class="blog-content-wrap row">
+      <div class="blog-content col-9">
+        <h1 class="blog-body-title">{entry.data.title}</h1>
+        <img src={"/images/" + entry.data.mainImg} alt="" class="blog-body-main-img">
+        <Content />
+        <div class="blog-author-wrap">
+          <div class="blog-author-body row">
+            <div class="blog-author-avt col-3">
+                <img src="/images/co-giao.png" alt="">
+                <i class="fa-solid fa-graduation-cap blog-author-cap-ico"></i>
+            </div>
+            <div class="blog-author-content col-9">
+                <strong class="blog-author-name">Tác giả: Cô giáo Hồ Thị Tình (Cô Mộc Miên)</strong>
+                <span class="blog-author-position">Founder trung tâm Mộc Miên</span>
+                <p class="blog-author-desc">
+                  Với hơn 10 năm kinh nghiệm trong giảng dạy và luyện thi, Mộc Miên đã giúp hàng trăm
+                  học viên đạt điểm cao trong kỳ thi HSK. Bên cạnh đó, cô cũng là chuyên gia tham vấn
+                  trong các chương trình tiếng Trung và là diễn giả tại nhiều sự kiện, chương trình và hội thảo.
+                </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="recent-content col-3">
+        <div class="recent-blog">
+          <h3 class="recent-blog-heading">
+            Các bài viết mới nhất
+          </h3>
+          <div class="recent-items">
+            {recentPosts.slice(0, 4).map (post => (
+              <div class="recent-item row">
+                <div class="col-6">
+                  <img src={"/images/" + post.data.mainImg} alt="" class="recent-item-img">
+                </div>
+                <div class="col-6 recent-item-body">
+                  <a href={"/bai-viet/" + post.slug} class="recent-item-title">
+                    {post.data.title.split(' ').slice(0, 9).join(' ') + '...'}
+                  </a>
+                  <span class="recent-item-date">{formatDate(post.data.pubDate)}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <style>
+    :global(*) {
+      line-height: 1.5;
+    }
+    .blog-body-wrapper {
+      max-width: 1280px;
+      margin: 0px 120px;
+    }
+    .blog-body-title {
+      margin: 0 0 24px;
+      color: var(--primary-color);
+      font-size: 30px;
+      padding: 32px 0;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .blog-body-main-img {
+      max-width: 100%;
+      max-height: 800px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 12px;
+    }
+    .blog-breadcum-wrapper {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: solid 2px #E5E7EB;
+    }
+    .blog-breadcum-item,
+    .blog-breadcum-item i,
+    .blog-breadcum-arrow {
+      color: var(--text-color2);
+      font-size: 14px;
+    }
+    
+    :global(table) {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    :global(td, th) {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 16px;
+    }
+
+    .blog-author-wrap {
+      background-color: #fafafa;
+      border-radius: 10px;
+      padding: 32px;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .blog-author-avt {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .blog-author-avt img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .blog-author-content {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .blog-author-position {
+      display: block;
+      color: var(--text-color2);
+    }
+
+    .blog-author-cap-ico {
+      position: absolute;
+      left: 0;
+      rotate: -30deg;
+      font-size: 24px;
+      color: var(--primary-color);
+    }
+
+    .recent-item-img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .recent-item-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .recent-item-title {
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .recent-item-date {
+      font-size: 14px;
+      color: var(--text-color2);
+    }
+
+    .recent-item {
+      border-bottom: dashed 1px #dddddd;
+      padding: 12px 0;
+    }
+  </style>
 </MainLayout>

@@ -1,4 +1,4 @@
-<header id="home-header">
+<header id="main-header">
     <i class="fa-solid fa-bars home-menu-bar"></i>
     <a href="/" id="header-logo-link">
         <img src="/images/site-logo-only.png" alt="Trang chủ | Tiếng Trung Mộc Miên">
@@ -20,4 +20,158 @@
         </div>
         <a href="" class="header-btn-reg btn-primary">Đăng ký học</a>
     </div>
+
+    <style>
+        #main-header {
+            display: flex;
+            height: 96px;
+            padding: 0px 100px;
+            border-bottom: solid 1px rgb(243 244 246 / 1);
+        }
+
+        #header-logo-link {
+            width: 20%;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 18px;
+            gap: 12px;
+        }
+
+        #header-logo-link span {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        #header-logo-link img {
+            width: 80px;
+        }
+
+        #main-header nav {
+            display: flex;
+            width: 56%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-links-item {
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 0 16px;
+            display: flex;
+            height: 100%;
+            align-items: center;
+            font-weight: 500;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .header-links-item:hover,
+        .header-hotline:hover {
+            color: var(--primary-color);
+        }
+
+        .header-hotline-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 24%;
+            flex-wrap: wrap;
+        }
+
+        .header-phone-icon {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+        }
+
+        .header-hotline {
+            text-decoration: none;
+        }
+
+        .header-btn-reg {
+            height: 40px;
+            padding: 0 12px;
+            background-color: var(--secondary-color);
+        }
+
+        .home-menu-bar {
+            display: none;
+        }
+
+        @media only screen and (max-width: 1360px) {
+            #header-logo-link {
+                width: 25%;
+            }
+
+            .header-phone-icon {
+                width: unset;
+                height: unset;
+                line-height: unset;
+                background-color: unset;
+                color: unset;
+            }
+
+            .header-contact {
+                width: 19%;
+                justify-content: space-evenly;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .header-contact {
+                display: none;
+            }
+            #main-header {
+                position: relative;
+                margin: 0;
+            }
+            #main-header nav {
+                position: absolute;
+                top: 100%;
+                flex-direction: column;
+                width: unset;
+                left: 0;
+                right: 0;
+                background-color: var(--white-color);
+                z-index: 1;
+                align-items: flex-start;
+                border-top: solid 2px var(--primary-color);
+            }
+            #header-logo-link {
+                width: unset;
+                margin-left: 32px;
+            }
+            .header-nav-hidden {
+                display: none !important;
+            }
+            .home-menu-bar {
+                font-size: 28px;
+                position: absolute;
+                right: 0;
+                display: flex;
+                align-items: center;
+                height: 96px;
+                padding: 0 32px;
+            }
+            .header-links-item {
+                padding: 15px 0;
+                font-size: 18px;
+                margin-left: 40px;
+                width: 100%;
+            }
+        }
+    </style>
 </header>
