@@ -6,6 +6,7 @@ const allPosts = await getCollection('blog');
 allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 import { formatDate } from '../utils/formatDate';
 import '../css/index.css'
+import createSlug from '../utils/createSlug';
 ---
 
 <MainLayout>
@@ -291,11 +292,11 @@ import '../css/index.css'
 						{allPosts.slice(0, 3).map(post => (
 							<li class="nw-blog-item col-xl-4 col-md-12">
 								<div class="nw-blog-item-body">
-									<a href={'/bai-viet/' + post.slug} class="blog-item-link-img">
+									<a href={'/bai-viet/' + createSlug(post.slug)} class="blog-item-link-img">
 										<img src={(post.data.mainImg || '').replace('/public/', '')} alt="" class="blog-item-img">
 									</a>
 									<div class="nw-blog-item-ref">
-										<a href={'/bai-viet/' + post.slug} class="blog-item-link-title">
+										<a href={'/bai-viet/' + createSlug(post.slug)} class="blog-item-link-title">
 											{post.data.title}
 										</a>
 										<span class="blog-item-date text-color-2">{formatDate(post.data.pubDate)}</span>
