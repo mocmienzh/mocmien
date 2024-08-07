@@ -1,6 +1,6 @@
 ---
-title: 'Tất tần tật: Từ vựng Tiếng Trung về các loài động vật'
-mainImg: /src/images/blog-2.jpg
+title: "Tất tần tật: Từ vựng Tiếng Trung về các loài động vật"
+mainImg: /public/images/blog-2.jpg
 pubDate: 2024-07-28
 ---
 Các loài động vật sinh sống khắp nơi trên Trái đất bao la rộng lớn. Cùng với con người, chúng là hiện thân của sự sống trên hành tinh của chúng ta.  Hôm nay, Trung tâm tiếng Trung Mộc Miên hướng dẫn các bạn đọc tên các loài động vật thường gặp nhé.
