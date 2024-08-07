@@ -1,6 +1,6 @@
 ---
 title: Những từ vựng thường gặp về hoa quả
-mainImg: /public/images/blog-1.jpg
+mainImg: blog-1.jpg
 pubDate: 2024-07-01
 ---
 Bạn đã từng thử cách học từ vựng tiếng Trung theo chủ đề thông dụng chưa? Nếu chưa hãy thử áp dụng phương pháp này, chắc chắn việc ghi nhớ từ vựng sẽ tăng nhanh theo cấp số nhân, gấp nhiều lần so với việc học thông thường. Và trong bài viết này, Mộc Miên sẽ bật mí cho các bạn trọn bộ từ vựng tiếng Trung theo chủ đề quen thuộc liên quan đến hoa quả!

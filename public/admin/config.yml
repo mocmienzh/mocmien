@@ -3,7 +3,7 @@ backend:
   repo: mocmienzh/mocmien
 
 media_folder: "/public/images"
-public_folder: "/images"
+public_folder: ""
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
