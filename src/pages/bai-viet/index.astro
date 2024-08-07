@@ -1,9 +1,142 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection } from 'astro:content';
+import createSlug from '../../utils/createSlug';
+import { formatDate } from '../../utils/formatDate';
+import RecentItem from "../../components/RecentItem.astro";
+
+const allPosts = await getCollection('blog');
+allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const latestPost = allPosts[0];
+
+const allCourses = await getCollection('courses');
 ---
 
 <MainLayout>
-    <div class="all-post-wrap">
-        
+    <div class="all-posts-wrap row">
+        <div class="all-posts-body col-9">
+            <h2 class="all-posts-heading">Tất cả các bài viết</h2>
+            <p class="all-posts-desc text-color-2">
+                Ngoài giảng dạy ra, Mộc Miên còn liên tục chia sẻ những bài viết về kiến thức, kinh nghiệm học tiếng Trung.
+                Cùng học tốt Tiếng Trung ngay từ hôm nay qua các loạt bài chia sẻ được nghiên cứu và xuất bản
+                bởi Mộc Miên dưới đây
+            </p>
+            <div class="all-posts-items">
+                <a href={`/bai-viet/${createSlug(latestPost.slug)}`} class="post-latest">
+                    <div class="post-latest-link-img">
+                        <img src={`/images/${latestPost.data.mainImg}`} alt="">
+                    </div>
+                    <div class="post-latest-href">
+                        <h3 class="post-latest-title">
+                            {latestPost.data.title}
+                        </h3>
+                        <p class="post-latest-desc text-color-2">
+                            {latestPost.body.split(' ').slice(0, 40).join(' ') + '...'}
+                        </p>
+                    </div>
+                </a>
+                <div class="posts-remain row">
+                    {allPosts.slice(1).map(post => (
+                        <a href={`/bai-viet/${createSlug(post.slug)}`} class="post-remain-item col-4">
+                            <img src={`/images/${post.data.mainImg}`} alt="" class="post-remain-img">
+                            <h4 class="post-remain-item-title">
+                                {post.data.title}
+                            </h4>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <h3 class="recent-courses-heading">Khoá học mới cập nhật</h3>
+            <RecentItem>
+                {allCourses.slice(0, 4).map (post => (
+                    <div class="recent-item row">
+                      <div class="col-6">
+                        <img src={`/images/${post.data.mainImg}`} alt="" class="recent-item-img">
+                      </div>
+                      <div class="col-6 recent-item-body">
+                        <a href={"/bai-viet/" + createSlug(post.slug)} class="recent-item-title">
+                          {post.data.name.split(' ').slice(0, 9).join(' ')}
+                        </a>
+                        <span class="recent-item-date">{`(${post.data.lessons} tiết, ${post.data.subjects} bài)`}</span>
+                      </div>
+                    </div>
+                ))}
+            </RecentItem>
+        </div>
     </div>
+
+    <style>
+        .all-posts-wrap {
+            margin: 24px 120px;
+        }
+
+        .all-posts-heading {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .all-posts-desc {
+            font-size: 15px;
+        }
+
+        .post-latest {
+            display: block;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .post-latest-link-img {
+            display: flex;
+        }
+
+        .post-latest-link-img img {
+            width: 100%;
+        }
+
+        .post-latest-href {
+            background: linear-gradient(180deg,transparent,rgba(0,0,0,.5) 52.08%,#000);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+        }
+
+        .post-latest-title {
+            color: var(--white-color);
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .post-latest-desc {
+            margin: 20px 0;
+        }
+
+        .posts-remain {
+            margin-top: 20px;
+        }
+
+        .post-remain-item {
+            text-decoration: none;
+        }
+
+        .post-remain-img {
+            width: 100%;
+            max-height: 216px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 6px;
+        }
+
+        .post-remain-item-title {
+            margin: 16px 0;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+    </style>
 </MainLayout>

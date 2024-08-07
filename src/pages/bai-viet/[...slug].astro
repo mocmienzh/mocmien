@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
 import { formatDate } from '../../utils/formatDate';
 import createSlug from '../../utils/createSlug';
+import RecentItem from '../../components/RecentItem.astro';
 
 
 export async function getStaticPaths() {
@@ -32,14 +33,14 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
       </div>
       <i class="fa-solid fa-angle-right blog-breadcum-arrow"></i>
       <div class="blog-breadcum-item">
-        {entry.slug}
+        {entry.data.title}
       </div>
     </div>
 
     <div class="blog-content-wrap row">
       <div class="blog-content col-9">
         <h1 class="blog-body-title">{entry.data.title}</h1>
-        <img src={(entry.data.mainImg || '').replace('/public/', '/')} alt="" class="blog-body-main-img">
+        <img src={`/images/${entry.data.mainImg}`} alt="" class="blog-body-main-img">
         <Content />
         <div class="blog-author-wrap">
           <div class="blog-author-body row">
@@ -64,21 +65,21 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
           <h3 class="recent-blog-heading">
             Các bài viết mới nhất
           </h3>
-          <div class="recent-items">
+          <RecentItem>
             {recentPosts.slice(0, 4).map (post => (
               <div class="recent-item row">
                 <div class="col-6">
-                  <img src={(post.data.mainImg || '').replace('/public/', '/')} alt="" class="recent-item-img">
+                  <img src={`/images/${post.data.mainImg}`} alt="" class="recent-item-img">
                 </div>
                 <div class="col-6 recent-item-body">
-                  <a href={"/bai-viet/" + post.slug} class="recent-item-title">
+                  <a href={"/bai-viet/" + createSlug(post.slug)} class="recent-item-title">
                     {post.data.title.split(' ').slice(0, 9).join(' ') + '...'}
                   </a>
                   <span class="recent-item-date">{formatDate(post.data.pubDate)}</span>
                 </div>
               </div>
             ))}
-          </div>
+          </RecentItem>
         </div>
       </div>
     </div>
@@ -89,7 +90,6 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
       line-height: 1.5;
     }
     .blog-body-wrapper {
-      max-width: 1280px;
       margin: 0px 120px;
     }
     .blog-body-title {
@@ -99,6 +99,14 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
       padding: 32px 0;
       border-bottom: 1px solid #E5E7EB;
     }
+
+    :global(img) {
+      max-width: 100%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .blog-body-main-img {
       max-width: 100%;
       max-height: 800px;
@@ -170,33 +178,6 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
       rotate: -30deg;
       font-size: 24px;
       color: var(--primary-color);
-    }
-
-    .recent-item-img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-    }
-
-    .recent-item-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .recent-item-title {
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .recent-item-date {
-      font-size: 14px;
-      color: var(--text-color2);
-    }
-
-    .recent-item {
-      border-bottom: dashed 1px #dddddd;
-      padding: 12px 0;
     }
   </style>
 </MainLayout>
