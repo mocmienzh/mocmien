@@ -3,8 +3,6 @@ title: Bí quyết nhớ mặt chữ tiếng Trung nhanh, chuẩn và lâu
 mainImg: /public/images/cach-hoc-tieng-trung.png
 pubDate: 2024-08-08T02:12:00.000Z
 ---
-
-
 Khi học một ngoại ngữ sử dụng các chữ tượng hình như tiếng Trung thì có rất nhiều bạn sẽ đặt câu hỏi là làm thế nào để **nhớ mặt chữ tiếng Trung nhanh, chuẩn và lâu**. Nhớ được nhiều chữ cũng là một trong những mục tiêu cần đặt ra ngay thì thời điểm mới học tiếng Trung bởi ngoài việc giao tiếp nghe nói tốt thì chúng ta cũng cần đọc hiểu tốt nữa. Vì thế chưa cần biết làm thế nào để nhớ được mặt chữ tốt, trước tiên các bạn cần phải đặt ra cho mình mục tiêu là phải thành thạo cả bốn kĩ năng nữa nha.
 
 Còn về **bí quyết nhớ mặt chữ tiếng Trung nhanh, chuẩn và lâu** thì chỉ có hai chữ thôi: Chăm chỉ. Còn chăm chỉ thế nào thì mời các bạn đọc bài viết dưới đây của Mộc Miên nhé 😀
@@ -37,7 +35,7 @@ Tiếp theo, chăm đọc những nội dung nằm ngoài giáo trình học. V�
 
 * Truyện 你最喜欢谁
 
-  ![](/public/images/ni-zui-xi-huan-shei.jpg)
+  ![](/public/ni-zui-xi-huan-shei.jpg)
 
   À đặc biệt câu truyện này còn đi kèm với bản mp3 để các bạn luyện nghe nữa nhé, bạn có thể nghe trước khi đọc để xem mình nghe được bao nhiêu phần rồi mới tiến hành đọc và học từ mới nha.
 * Đọc các đoạn văn ngắn cấp cơ bản ở app Du Chinese (hoặc các app tương tự, nhớ là nên chọn app có chia cấp độ nhé, đừng đọc những cái quá khó so với trình độ của mình)
