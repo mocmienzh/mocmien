@@ -35,7 +35,7 @@ Tiếp theo, chăm đọc những nội dung nằm ngoài giáo trình học. V�
 
 * Truyện 你最喜欢谁
 
-  ![](/public/ni-zui-xi-huan-shei.jpg)
+  ![](/images/ni-zui-xi-huan-shei.jpg)
 
   À đặc biệt câu truyện này còn đi kèm với bản mp3 để các bạn luyện nghe nữa nhé, bạn có thể nghe trước khi đọc để xem mình nghe được bao nhiêu phần rồi mới tiến hành đọc và học từ mới nha.
 * Đọc các đoạn văn ngắn cấp cơ bản ở app Du Chinese (hoặc các app tương tự, nhớ là nên chọn app có chia cấp độ nhé, đừng đọc những cái quá khó so với trình độ của mình)
