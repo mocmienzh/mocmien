@@ -7,8 +7,6 @@ allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 import { formatDate } from '../utils/formatDate';
 import '../css/index.css'
 import createSlug from '../utils/createSlug';
-import { Image } from 'astro:assets';
-import coGiaoImg from '../images/co-giao.png';
 ---
 
 <MainLayout>
@@ -35,7 +33,7 @@ import coGiaoImg from '../images/co-giao.png';
 						<div class="aft-circle1"></div>
 						<div class="aft-circle2"></div>
 						<div class="intro-img-teacher-wrap">
-							<Image src={coGiaoImg} alt="" class="intro-teacher-img"/>
+							<img src="/images/co-giao.png" alt="" class="intro-teacher-img">
 							<ul class="teacher-prop teacher-prop-list teacher-prop-list1" data-aos="fade-right" data-aos-duration="2000">
 								<li class="teacher-prop-list-item text-color-2">
 									<i class="fa-solid fa-check"></i>

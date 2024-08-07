@@ -2,7 +2,7 @@ backend:
   name: github
   repo: mocmienzh/mocmien
 
-media_folder: "src/images"
+media_folder: "public/images"
 
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog

@@ -1,6 +1,6 @@
 ---
 title: 'Thông báo: Lịch học Tiếng Trung tháng 8'
-mainImg: /public/images/blog-3.jpg
+mainImg: /src/images/blog-3.jpg
 pubDate: 2024-07-30
 ---
 Trung tâm Tiếng Trung Mộc Miên xin thông báo tới các học viên về lịch học mới trong tháng 8/2024 này
