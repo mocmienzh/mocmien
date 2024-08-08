@@ -14,7 +14,7 @@ const allCourses = await getCollection('courses');
 
 <MainLayout>
     <div class="all-posts-wrap row">
-        <div class="all-posts-body col-9">
+        <div class="all-posts-body col-lg-9 col-md-9 col-12">
             <h2 class="all-posts-heading">Tất cả các bài viết</h2>
             <p class="all-posts-desc text-color-2">
                 Ngoài giảng dạy ra, Mộc Miên còn liên tục chia sẻ những bài viết về kiến thức, kinh nghiệm học tiếng Trung.
@@ -37,7 +37,7 @@ const allCourses = await getCollection('courses');
                 </a>
                 <div class="posts-remain row">
                     {allPosts.slice(1).map(post => (
-                        <a href={`/bai-viet/${createSlug(post.slug)}`} class="post-remain-item col-4">
+                        <a href={`/bai-viet/${createSlug(post.slug)}`} class="post-remain-item col-lg-4 col-md-4 col-6">
                             <img src={`/images/${post.data.mainImg}`} alt="" class="post-remain-img">
                             <h4 class="post-remain-item-title">
                                 {post.data.title}
@@ -47,7 +47,7 @@ const allCourses = await getCollection('courses');
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-lg-3 col-md-3 col-12">
             <h3 class="recent-courses-heading">Khoá học mới cập nhật</h3>
             <RecentItem>
                 {allCourses.slice(0, 4).map (post => (
@@ -86,6 +86,7 @@ const allCourses = await getCollection('courses');
             overflow: hidden;
             border-radius: 12px;
             position: relative;
+            text-decoration: none;
         }
 
         .post-latest-link-img {
@@ -137,6 +138,42 @@ const allCourses = await getCollection('courses');
             margin: 16px 0;
             font-weight: 500;
             color: var(--primary-color);
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .post-latest-href {
+                background: none;
+                position: unset;
+                padding: unset;
+            }
+
+            .post-latest-title {
+                margin-top: 12px;
+                color: unset;
+                font-size: 24px;
+            }
+
+            .post-latest-link-img img {
+                border-radius: 12px;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .all-posts-wrap {
+                margin: 24px 20px;
+            }
+
+            .post-latest-desc {
+                margin: 8px 0;
+            }
+
+            .posts-remain {
+                margin: 32px 0;
+            }
+
+            .post-remain-img {
+                height: 120px;
+            }
         }
     </style>
 </MainLayout>

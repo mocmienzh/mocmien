@@ -38,17 +38,17 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
     </div>
 
     <div class="blog-content-wrap row">
-      <div class="blog-content col-9">
+      <div class="blog-content col-lg-9">
         <h1 class="blog-body-title">{entry.data.title}</h1>
         <img src={`/images/${entry.data.mainImg}`} alt="" class="blog-body-main-img">
         <Content />
         <div class="blog-author-wrap">
           <div class="blog-author-body row">
-            <div class="blog-author-avt col-3">
+            <div class="blog-author-avt col-lg-3 col-md-3 col-12">
                 <img src="/images/co-giao.png" alt="">
                 <i class="fa-solid fa-graduation-cap blog-author-cap-ico"></i>
             </div>
-            <div class="blog-author-content col-9">
+            <div class="blog-author-content col-lg-9 col-md-9 col-12">
                 <strong class="blog-author-name">Tác giả: Cô giáo Hồ Thị Tình (Cô Mộc Miên)</strong>
                 <span class="blog-author-position">Founder trung tâm Mộc Miên</span>
                 <p class="blog-author-desc">
@@ -60,7 +60,7 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
           </div>
         </div>
       </div>
-      <div class="recent-content col-3">
+      <div class="recent-content col-lg-3">
         <div class="recent-blog">
           <h3 class="recent-blog-heading">
             Các bài viết mới nhất
@@ -178,6 +178,44 @@ recentPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
       rotate: -30deg;
       font-size: 24px;
       color: var(--primary-color);
+    }
+
+    @media only screen and (max-width: 768px) {
+      .recent-item-img {
+        height: 218px;
+      }
+
+      .blog-breadcum-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+
+    @media only screen and (max-width: 576px) {
+      .blog-body-wrapper {
+        margin: 0px 20px;
+      }
+
+      .blog-author-avt {
+        display: none;
+      }
+
+      .blog-body-title {
+        padding: 20px 0;
+      }
+
+      .blog-author-wrap {
+        padding: 12px
+      }
+
+      .blog-author-desc {
+        margin-bottom: 0;
+      }
+
+      .recent-item-img {
+        height: 100px;
+      }
     }
   </style>
 </MainLayout>
